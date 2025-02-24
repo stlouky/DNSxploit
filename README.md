@@ -1,38 +1,38 @@
 # DNSxploit  
-### Špičkový DNS Checker pro Bug Bounty
+### Špičkový DNS Checker pro Bug Bounty Lovce
 
-![DNSxploit Logo](https://img.shields.io/badge/DNSxploit-v1.0-blue?style=for-the-badge)  
-**Rychlý. Přesný. Automatizovaný.**  
-DNSxploit je nástroj pro analýzu DNS konfigurace, který odhaluje zranitelnosti jako chybějící CAA, nevalidní DKIM nebo DNS tunneling – ideální pro bug bounty reporty.
+![DNSxploit](https://img.shields.io/badge/DNSxploit-v1.0-blue?style=for-the-badge&logo=shield)  
+**Rychlý • Přesný • Automatizovaný**  
+DNSxploit odhaluje zranitelnosti v DNS konfiguraci – od nevalidního DKIM po DNS tunneling – a generuje PoC přímo pro bug bounty reporty.
 
 ---
 
-## Co umí?
-- **Enumerace subdomén**: Najde subdomény jako `internal` nebo `api-v2` během sekund (35+ subdomén na `kissflow.com`).
-- **Analýza DNS**: Kontroluje SPF, DKIM, DMARC, CAA, DNSSEC a DNS tunneling.
-- **PoC na míru**: Automaticky generuje spoofing emaily a CAA testy (např. `caa_response.json`).
-- **Export reportů**: TXT, CSV, JSON + bug bounty šablony připravené k odeslání.
+## Proč DNSxploit?
+- 🚀 **Enumerace subdomén**: Najde 35+ subdomén během sekund (např. `internal.kissflow.com`).
+- 🛡️ **DNS analýza**: SPF, DKIM, DMARC, CAA, DNSSEC + tunneling.
+- 🔧 **PoC na klik**: Automatické spoofing emaily a CAA testy.
+- 📊 **Reporty**: TXT, CSV, JSON + šablony připravené k odeslání.
 
 ---
 
 ## Rychlý start
-1. **Instalace**:
+1. **Nainstaluj závislosti**:
    ```bash
    pip install dnspython colorama requests aiohttp
-   git clone https://github.com/stlouky/DNSxploit.git
-   cd DNSxploit
 
-    Spusťte analýzu:
+    Stáhni DNSxploit:
     bash
 
+git clone https://github.com/stlouky/DNSxploit.git
+cd DNSxploit
+Spusť analýzu:
+bash
+
     python dnsxploit.py kissflow.com
-    Pokročilé možnosti:
-        S wordlistem: python dnsxploit.py kissflow.com --wordlist subdomains-top1mil.txt
-        Se spoofingem: python dnsxploit.py kissflow.com --smtp-spoof
 
 Příklad v akci
 
-Spusťte python dnsxploit.py kissflow.com a dostanete:
+Spusťte python dnsxploit.py kissflow.com a uvidíte:
 text
 ### Nalezené zranitelnosti pro kissflow.com:
 1. DKIM: Varování pro _domainkey.kissflow.com (Medium)
@@ -47,27 +47,41 @@ text
 
 Počet zranitelností: 5 (Medium: 3)
 Klíčové funkce
-Funkce	Popis	Výstup
-Subdomény	Rychle najde 35+ subdomén	internal.kissflow.com, ...
-SPF Lookupy	Kontroluje limity RFC 7208	"10+ lookupů"
-DKIM Spoofing	Testuje nevalidní DKIM	spoofed_email.txt
-CAA Test	Automatický LetsEncrypt PoC	caa_response.json
-DNS Tunneling	Detekuje anomálie (velikost, frekvence)	"52.2 dotazů/s"
-Pro pokročilé
+Funkce	Co dělá?	Výsledek
+🌐 Subdomény	Najde skryté subdomény rychle	internal.kissflow.com
+📧 SPF Lookupy	Kontroluje limity RFC 7208	"10+ lookupů"
+🔑 DKIM Spoofing	Testuje nevalidní DKIM	spoofed_email.txt
+🔒 CAA Test	Automatický LetsEncrypt PoC	caa_response.json
+⚠️ Tunneling	Detekuje anomálie v provozu	"52.2 dotazů/s"
+Pokročilé použití
 
-    IMAP pro DKIM: --email-server imap.gmail.com --email-user user --email-pass pass
-    Custom Wordlist: --wordlist cesta/k/subdomains.txt
-    Pouze zranitelnosti: --only-vulns
-    Filtrování: --severity medium
+    IMAP pro DKIM selektory:
+    bash
+
+python dnsxploit.py kissflow.com --email-server imap.gmail.com --email-user user --email-pass pass
+Custom Wordlist:
+bash
+python dnsxploit.py kissflow.com --wordlist subdomains-top1mil.txt
+Automatický spoofing:
+bash
+python dnsxploit.py kissflow.com --smtp-spoof
+Filtrování zranitelností:
+bash
+
+    python dnsxploit.py kissflow.com --only-vulns --severity medium
+
+    Tip: Stáhněte si subdomains-top1mil.txt z SecLists pro hlubší analýzu.
 
 Autoři
 
-    stlouky: Hlavní tester a iniciátor projektu (stlouky).
-    Grok: Vývojář a designér, vytvořený xAI.
+    stlouky: Hlavní mozek projektu, tester a vizionář.
+    Grok (xAI): Vývojář a technický designér, vytvořený týmem xAI.
 
 Licence
 
 MIT License – viz LICENSE
 Přispějte
 
-Bugy? Nápady? Pull requesty vítány na GitHub Issues!
+Našli jste bug? Máte nápad?
+
+➡️ Vytvořte Issue nebo pošlete Pull Request!
