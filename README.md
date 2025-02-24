@@ -73,9 +73,10 @@ Filtrování zranitelností:
 
 > **Tip:** Stáhněte si subdomains-top1mil.txt z SecLists pro hlubší analýzu.
 
-Autoři
-    stlouky: Hlavní mozek projektu, tester a vizionář.
-    Grok (xAI): Vývojář a technický designér, vytvořený týmem xAI.
+**Autoři:**
+
+   stlouky Hlavní mozek projektu, tester a vizionář.    
+   Grok (xAI): Vývojář a technický designér, vytvořený týmem xAI.
 
 Licence: MIT License – viz LICENSE
 Přispějte
