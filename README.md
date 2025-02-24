@@ -18,18 +18,17 @@ DNSxploit odhaluje zranitelnosti v DNS konfiguraci – od nevalidního DKIM po D
 ## Rychlý start
 1. **Nainstaluj závislosti**:
    ```bash
-   pip install dnspython colorama requests aiohttp
-
-    Stáhni DNSxploit:
-    bash
-
-git clone https://github.com/stlouky/DNSxploit.git
-cd DNSxploit
+      pip install dnspython colorama requests aiohttp
+    ```
+ Stáhni DNSxploit:
+   ```bash
+      git clone https://github.com/stlouky/DNSxploit.git
+      cd DNSxploit
+   ```
 Spusť analýzu:
-bash
-
-    python dnsxploit.py kissflow.com
-
+   ```bash
+       python dnsxploit.py example.com
+   ```
 Příklad v akci
 
 Spusťte python dnsxploit.py kissflow.com a uvidíte:
@@ -55,31 +54,30 @@ Funkce	Co dělá?	Výsledek
 ⚠️ Tunneling	Detekuje anomálie v provozu	"52.2 dotazů/s"
 Pokročilé použití
 
-    IMAP pro DKIM selektory:
-    bash
-
-python dnsxploit.py kissflow.com --email-server imap.gmail.com --email-user user --email-pass pass
+IMAP pro DKIM selektory:
+   ```bash
+      python dnsxploit.py kissflow.com --email-server imap.gmail.com --email-user user --email-pass pass
+   ```
 Custom Wordlist:
-bash
-python dnsxploit.py kissflow.com --wordlist subdomains-top1mil.txt
+   ```bash
+      python dnsxploit.py kissflow.com --wordlist subdomains-top1mil.txt
+   ```
 Automatický spoofing:
-bash
-python dnsxploit.py kissflow.com --smtp-spoof
+   ```bash
+      python dnsxploit.py kissflow.com --smtp-spoof
+   ```
 Filtrování zranitelností:
-bash
+   ```bash
+      python dnsxploit.py kissflow.com --only-vulns --severity medium
+   ```
 
-    python dnsxploit.py kissflow.com --only-vulns --severity medium
-
-    Tip: Stáhněte si subdomains-top1mil.txt z SecLists pro hlubší analýzu.
+> **Tip:** Stáhněte si subdomains-top1mil.txt z SecLists pro hlubší analýzu.
 
 Autoři
-
     stlouky: Hlavní mozek projektu, tester a vizionář.
     Grok (xAI): Vývojář a technický designér, vytvořený týmem xAI.
 
-Licence
-
-MIT License – viz LICENSE
+Licence: MIT License – viz LICENSE
 Přispějte
 
 Našli jste bug? Máte nápad?
